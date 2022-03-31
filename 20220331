@@ -1,0 +1,14 @@
+emacs keys: **C-h m** show next step you can go
+magit: really magic tools
+tap M-x magit then you can do everything a git can do
+the most useful features I think:
+s stage
+S stage-all
+
+u unstage
+U unstage-all
+
+c commit
+P push
+
+C-h m you can see everything
