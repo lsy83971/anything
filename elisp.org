@@ -1,0 +1,206 @@
+* elisp eps1 https://www.youtube.com/watch?v=RQK_DaaX34Q&list=PLEoMzSkcN8oPQtn7FQEF3D7sroZbXuPZ7
+
+buffer windows are objects that can only be manipulated by api
+
+array square brackets [1 2 3]
+buffer-file-name
+
+[1 2 (+ 1 2)]
+
+有一些对象诸如buffer windows 有一个string作为代表但是
+其本身是不能被求值
+仅能够通过api函数进行操作
+
+dfs/some-name 合法symbol
+*globalvariable* 全局变量
+string= 合法symbol
+
+symbol可以被求值
+
+(type-of 40)
+(type-of "asdf")
+(type-of 'asdf)
+(type-of '(1 2 3))
+
+* elisp eps2 https://www.youtube.com/watch?v=XXpgzyeYh_4&list=PLEoMzSkcN8oPQtn7FQEF3D7sroZbXuPZ7&index=2
+
+** eq eql equal
+*** eq are two parameters the same object
+(eq 1 1) ;;t same object for same thing
+(eq 3.1 3.1) ;;nil
+(setq a 3.1)
+(eq a a) ;;t
+
+*** *eql are the two param same obj or same number
+(eql "thing" "thing")
+
+*** equal are two param equivalent
+(equal "thing" "thing")
+
+
+** number
+1. types: integer float
+2. float2int functions: trancate round floor ceiling
+3. true-or-false functions: integerp floatp numberp zerop
+4. basic functions:= > < >= <= min max 
+
+** character
+?\n ?\t ?A ?a <=> ord(A)
+1 (#o1, #x1, ?\C-a)
+#0 8进 #x 16j进 ?\字符
+char-equal
+(setq case-fold-search t) 影响到
+(char-equal)
+
+(kbd "M-x")
+(kbd "C-c")
+string <=> array
+
+** sequences
+(sequencep "")
+(sequencep [1 2])
+length
+
+(elt "hello" 0)
+(elt "hello" 1)
+(elt '(1 2) 1)
+
+** string different from character
+(make-string 5 ?A)
+(stringp "Test")
+(string-or-null-p "Test")
+(string-or-null-p nil)
+(char-or-string-p 130)
+
+(arrayp "Array")
+(sequencep "Array")
+(listp "List")
+(listp '(1 2))
+
+(string=)
+(string<)
+(string>)
+
+(substring "asdf" 0 3)
+(substring "asdf" 1)
+(concat "a" "b" "c")
+(setq case-fold-search nil)
+(setq case-fold-search t) no empty string show up
+
+(split-string "a asdf!" "[ !]")
+(split-string "a asdf!" "[ \f\t\n\r\v]+")
+
+(format "Hello %d %s" 100 "sdf")
+
+** list
+'(1 2 3)
+
+(cons 1 2)
+'(1 . 2)
+
+(cdr '(1 . 2))
+(cdr '(1  2))
+(setq some-cons '(1 . 2))
+(setcar some-cons 3)
+(setcdr some-cons 4)
+some-cons
+
+(cdr '(1))
+(append '(1 2 3) '(4 5 6))
+
+*** Alist (like dict in python)
+(setq some-alist '((one . 1) (two . 2)))
+(alist-get 'one some-alist)
+(assq 'one some-alist)
+(rassq 1 some-alist)
+(setf (alist-get 'one some-alist) 5)
+(setf (alist-get 'three some-alist) 6)
+some-alist
+
+*** Plist (like dict in python)
+(plist-get '(one 1 two 2) 'one)
+(plist-put '(one 1 tow 2) 'three 3)
+
+
+*** Arrays
+(setq some-array [1 2 3 4])
+(aset some-array 1 5)
+(elt some-array 1)
+
+(setq some-string "Hello!")
+(aset some-string 0 ?M)
+some-string
+
+(setq some-array [1 2 3])
+(fillarray some-array 6)
+some-array
+
+** if 
+(if nil 'true 'false)
+(if '() 'true 'false)
+
+(if exp parse1 parse2 parse3 ...)
+exp t then parse1
+exp nil then run parse2 to the end return the last parse
+
+not/and/or/xor
+and return the last value if all expressions are true
+and return the first value if all expressions are true
+
+(and t t 1)
+(or nil 3)
+(when (> 2 1) 'foo) run third exp to the end
+(unless (> 2 1) 'foo)
+
+(setq a 1)
+(cond ((eql a 1) "asdf")
+((> a 1) "asb")
+)
+
+(pcase 'a
+('b 1)
+('a 2)
+)
+
+** loop
+(while (exp) (..) (..) ...)
+(dotimes (count 5) (message "asdf %d" count))
+(dolist (item '("one" "two" "three")) (message "Item %s" item))
+
+
+
+
+* elisp eps 3 function
+https://www.youtube.com/watch?v=EqgkAUHw0Yc&list=PLEoMzSkcN8oPQtn7FQEF3D7sroZbXuPZ7&index=3
+
+
+(defun dost 
+"asdfasdfasdf"
+(x y) (+ x y))
+(dost 1 2)
+
+&optional &rest
+(defun mult (x &optional y z)
+(* x (or y 1) (or z 1))
+)
+
+** invoking functions
+
+(+ 2 2)
+(funcall '+ 2 2)
+two separated fields: function and variable
+
+(defun add (a b) (+ a b))
+
+(defun gf (a b c) (message "function:%s, arg:%d" a b) (funcall a b c))
+(gf 'add 1 2)
+(setq add1 (lambda (x y) (+ x y)))
+(gf (lambda (x y) (+ x y)) 1 2)
+(gf add1 1 2)
+
+': function as variable
+apply <=> funcall
+(apply add '(1 2))
+apply (python func(*args))
+
+

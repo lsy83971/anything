@@ -3,6 +3,7 @@
 that's a bit tricky to find but run
 ssh -T -ai ~/.ssh/KEY_NAME git@github.com
 ** A2:
+ssh-keygen -t ed25519 -C "your_email@example.com"
 https://stackoverflow.com/questions/21160774/github-error-key-already-in-use
 *** file example
 ## file:: c:/Users/48944/.ssh/config

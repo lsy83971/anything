@@ -61,3 +61,6 @@
 # M-Right:move to next tab
 # M-Left:move to previous tab
 
+** share configuration
+import export sync etc.
+
