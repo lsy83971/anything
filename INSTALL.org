@@ -1,0 +1,46 @@
+* UBUNTU
+** system
+1. download iso from ubuntu-website
+2. use rufus(windows) or usb-creator(ubuntu) to create an boot-disk
+3. some bios may need select boot-file from boot-disk *EFI/boot/grub64*
+4. some harddisk have activated RST-mode change to ACHI
+
+** after system
+*** sogou pinyin
+1. apt install fcitx
+2. apt remove ibus
+3. dpkg -i ..deb
+4. reset, then inputmethod -> setting -> add input
+*** nvidia
+1. install driver detector: apt install ubuntu-device
+2. check avaliable driver: ubuntu-device
+3. check valid: reboot-> nvidia-smi
+*** chrome
+1. download:wget or download from firefox
+2. dpkg -i ..deb
+*** proxy    
+1. find project: search v2ray install download install-realease.sh
+2. install: run bash ..sh
+3. copy json to /etc/v2ray/config.json
+4. service v2ray start
+5. (ubuntu)sys proxy: network socks:127.0.0.1 port:10808
+6. (ubuntu)switchyomega: search gfw
+7. (windows)search v2rayN
+
+** install package
+*** source code
+must mv to /usr/share for uninstall
+*** apt /etc/apt/sources.list
+*** pip
+search 
+~/.pip/pip.conf
+[global]index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+
+
+
+* nodejs
+wget https://nodejs.org/dist/v10.16.0/node-v10.16.0-linux-x64.tar.xz    download
+tar xf node-v10.16.0-linux-x64.tar.xz
+mv node-v10.16.0-linux-x64.tar.xz /usr/share -r
+cd node-v10.16.0-linux-x64                                              
+export PATH=$PATH:/usr/share/node-v10.16.0-linux-x64/bin
