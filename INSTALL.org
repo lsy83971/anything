@@ -39,8 +39,11 @@ search
 
 
 * nodejs
-wget https://nodejs.org/dist/v10.16.0/node-v10.16.0-linux-x64.tar.xz    download
+wget https://nodejs.org/dist/v16.10.0/node-v16.10.0-linux-x64.tar.xz download
 tar xf node-v10.16.0-linux-x64.tar.xz
 mv node-v10.16.0-linux-x64.tar.xz /usr/share -r
 cd node-v10.16.0-linux-x64                                              
 export PATH=$PATH:/usr/share/node-v10.16.0-linux-x64/bin
+
+npm install -g @vue/cli
+npm install
