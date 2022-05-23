@@ -1,0 +1,2 @@
+* set remote branch
+git branch --set-upstream-to=origin/thankgod thankgod

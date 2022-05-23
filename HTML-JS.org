@@ -1,0 +1,187 @@
+* box inside a div
+outside div: <div style='height:500px;width:500px'>
+inside div:  <div style="overflow: auto;position: relative;width: 100%;height: 100%;">
+inner object: maybe style='z-index:auto;text-overflow:ellipsis'
+
+org-mode-hook
+
+
+* update nodejs
+分享： 
+最近在用NPM安装一个nodejs工具时发现，我的nodejs的版本有些旧了。这不是大问题，只要升级就可以了，当然，重新从nodejs.org最新版本是一种方法，但我想应该有更简单的方法，那就是使用 n 这个工具包，我们可以使用NPM先安装 n 工具包，然后用它升级nodejs，十分的方便。
+
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
+上面这是使用 n 来安装最新的稳定版的nodejs。
+n 是一个Node工具包，它提供了几个升级命令参数：
+n                              显示已安装的Node版本
+n latest                       安装最新版本Node
+n stable                       安装最新稳定版Node
+n lts                          安装最新长期维护版(lts)Node
+n <version>                    根据提供的版本号安装Node
+比如，你想安装指定的版本号：
+sudo n 0.8.21
+一旦安装完成，你可以通过下面的命令确认安装的版本：
+node -v
+
+* deep copy
+structuredClone()
+
+* progrees bar
+https://css-tricks.com/html5-progress-element/
+  progress[class='red'] {
+      -webkit-appearance: none;
+      appearance: none;      
+      height: 0.5em;
+      /* vertical-align: -0.2em; */
+      width: 10em;      
+  }
+
+
+
+  progress[class='red']::-webkit-progress-bar {
+      background-color: #eee;
+      border-radius: 0.25em;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+  }
+
+  progress[class='red']::-webkit-progress-value {
+         /* background-image:
+	 /* -webkit-linear-gradient(-45deg, 
+	                          transparent 33%, rgba(0, 0, 0, .1) 33%, 
+	                          rgba(0,0, 0, .1) 66%, transparent 66%),
+	  -webkit-linear-gradient(top, 
+	                          rgba(255, 255, 255, .25), 
+	                          rgba(0, 0, 0, .25)),
+	  -webkit-linear-gradient(left, #09c, #f44); */
+      
+
+	  /* background-size: 35px 20px, 90% 90%, 90% 90%; */
+	  border-radius: 0.25em; 
+	  background:red;
+  }
+
+* datatable
+https://datatables.net/examples/basic_init/data_rendering.html
+js:
+$(document).ready(function () {
+    $('#example').DataTable({
+        ajax: '../ajax/data/objects_salary.txt',
+        columns: [
+            {
+                data: 'name',
+            },
+            {
+                data: 'position',
+                render: function (data, type) {
+                    if (type === 'display') {
+                        let link = 'http://datatables.net';
+ 
+                        if (data[0] < 'H') {
+                            link = 'http://cloudtables.com';
+                        } else if (data[0] < 'S') {
+                            link = 'http://editor.datatables.net';
+                        }
+ 
+                        return '<a href="' + link + '">' + data + '</a>';
+                    }
+ 
+                    return data;
+                },
+            },
+            {
+                className: 'f32', // used by world-flags-sprite library
+                data: 'office',
+                render: function (data, type) {
+                    if (type === 'display') {
+                        let country = '';
+ 
+                        switch (data) {
+                            case 'Argentina':
+                                country = 'ar';
+                                break;
+                            case 'Edinburgh':
+                                country = '_Scotland';
+                                break;
+                            case 'London':
+                                country = '_England';
+                                break;
+                            case 'New York':
+                            case 'San Francisco':
+                                country = 'us';
+                                break;
+                            case 'Sydney':
+                                country = 'au';
+                                break;
+                            case 'Tokyo':
+                                country = 'jp';
+                                break;
+                        }
+ 
+                        return '<span class="flag ' + country + '"></span> ' + data;
+                    }
+ 
+                    return data;
+                },
+            },
+            {
+                data: 'extn',
+                render: function (data, type, row, meta) {
+                    return type === 'display'
+                        ? '<progress value="' + data + '" max="9999"></progress>'
+                        : data;
+                },
+            },
+            {
+                data: 'start_date',
+            },
+            {
+                data: 'salary',
+                render: function (data, type) {
+                    var number = $.fn.dataTable.render
+                        .number(',', '.', 2, '$')
+                        .display(data);
+ 
+                    if (type === 'display') {
+                        let color = 'green';
+                        if (data < 250000) {
+                            color = 'red';
+                        } else if (data < 500000) {
+                            color = 'orange';
+                        }
+ 
+                        return '<span style="color:' + color + '">' + number + '</span>';
+                    }
+ 
+                    return number;
+                },
+            },
+        ],
+    });
+});
+
+html:<table id="example" class="display nowrap" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Progress</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Progress</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot>
+    </table>
+
+  
