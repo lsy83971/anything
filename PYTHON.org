@@ -1,3 +1,22 @@
 * multi-version
 
 * todo: exec(...,globals())
+
+* matplotlib
+matplotlib中文显示问题 转载
+mb5fe55a71c1d082021-10-29 18:23:00
+文章标签matplotlibpython缓存中文字体其他文章分类其他其它阅读数69
+
+方法
+下载中文字体 ，比如SimHei.ttf
+下载完的字体拷贝到matplotlib相应目录
+修改 matplotlibrc文件
+找到缓存目录，删除缓存，不然始终没法生效!!!
+缓存目录位置查看:
+1.from matplotlib import get_cachedir
+2.print(get_cachedir())
+以上前三步详情参考  https://www.pythonf.cn/read/85808 方法1 即可
+注意：以上第4步非常关键，不生效的原因可能主要还是第4步未删除缓存
+
+
+
