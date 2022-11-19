@@ -47,3 +47,7 @@ export PATH=$PATH:/usr/share/node-v10.16.0-linux-x64/bin
 
 npm install -g @vue/cli
 npm install
+
+* vue
+"npm install" before "npm run serve"
+
