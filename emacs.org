@@ -1,0 +1,18 @@
+* edebug
+find defun code
+activate:C-u C-M-x
+deactivate:C-M-x
+
+g goto end
+S Stop
+SPC Step
+n Next
+t Trace
+T Rapid trace
+c Continue
+i go into function
+e exp
+
+* interactive
+(interactive "s..... \n s .....\n")
+https://www.jianshu.com/p/65b271c1dabf

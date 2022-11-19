@@ -20,3 +20,29 @@ mb5fe55a71c1d082021-10-29 18:23:00
 
 
 
+* python -m package
+运行package内正文
+python -m venv 路径: 创建虚拟环境
+python -m site: 显示python
+
+import site可以找到site.py
+site.py 下 自定义文件路径
+USER_SITE = None
+USER_BASE = None
+
+* python install
+sudo apt install libffi-dev ...
+download package from https://mirrors.huaweicloud.com/python/3.10.8/
+unzip package
+./configure --prefix=/usr/local/python3.10
+make
+sudo make install
+ln -s ../pip3.10 /usr/local/bin/pip3.10
+ln -s ../python3.10 /usr/local/bin/python3.10
+
+python3.10 -m site check package default path
+
+
+
+
+
