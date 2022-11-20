@@ -16,3 +16,23 @@ e exp
 * interactive
 (interactive "s..... \n s .....\n")
 https://www.jianshu.com/p/65b271c1dabf
+
+
+
+* syntax
+** basic
+1. (setq) (defun) are the most important and basic code!!!
+2. ('symbol) used like pointer
+3. backquote difference with quote:
+   '(...some code...)
+   when use quote:code in the bracket won't be evaluated
+   '(,(...some code...))
+   when use backquote:code in the ,() will be evaluated
+4. don't be confused by add-to-list and some other function
+   like C:
+   when you need to change the origin value of a variable
+   you must use the pointer
+   in lisp: you must use quote
+5. (mapcar func list)
+
+
