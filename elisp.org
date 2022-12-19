@@ -23,7 +23,6 @@ symbol可以被求值
 (type-of '(1 2 3))
 
 * elisp eps2 https://www.youtube.com/watch?v=XXpgzyeYh_4&list=PLEoMzSkcN8oPQtn7FQEF3D7sroZbXuPZ7&index=2
-
 ** eq eql equal
 *** eq are two parameters the same object
 (eq 1 1) ;;t same object for same thing
@@ -170,8 +169,7 @@ and return the first value if all expressions are true
 
 
 
-* elisp eps 3 function
-https://www.youtube.com/watch?v=EqgkAUHw0Yc&list=PLEoMzSkcN8oPQtn7FQEF3D7sroZbXuPZ7&index=3
+* elisp eps 3 functionhttps://www.youtube.com/watch?v=EqgkAUHw0Yc&list=PLEoMzSkcN8oPQtn7FQEF3D7sroZbXuPZ7&index=3
 
 
 (defun dost 
@@ -202,5 +200,30 @@ two separated fields: function and variable
 apply <=> funcall
 (apply add '(1 2))
 apply (python func(*args))
+
+
+
+
+* lsp mode
+(use-package lsy-mode
+:command (lsp lsp-deferred)
+(setq lsp-keymap-prefix "C-c l")
+:config 
+(lsy-enable-which-key-integration)
+
+)
+
+* which key
+pass
+pass
+* lsp with python
+build ide
+projectile
+virtualenv
+gallery-el
+image gallery
+pip install --user python-language-server
+(use-package python-mode :ensure t :custom (pyton-shell-interpreter "python3"))
+
 
 
