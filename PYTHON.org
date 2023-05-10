@@ -31,16 +31,19 @@ USER_SITE = None
 USER_BASE = None
 
 * python install
-sudo apt install libffi-dev ...
-download package from https://mirrors.huaweicloud.com/python/3.10.8/
-unzip package
-./configure --prefix=/usr/local/python3.10
-make
-sudo make install
-ln -s ../pip3.10 /usr/local/bin/pip3.10
-ln -s ../python3.10 /usr/local/bin/python3.10
+1. install dependency
+   sudo apt install libffi-dev ...
+   or 
+   yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel gcc
+2. download source code
+   wget https://www.python.org/ftp/python/3.10.4/Python-3.10.4.tgz   
+3. compile
+   ./configure --prefix=/usr/local/python3.10
+   make
+   sudo make install
+   ln -s -f /usr/local/python3.10/bin/pip3 /usr/local/bin/pip3
+   ln -s -f /usr/local/python3.10/bin/python3 /usr/local/bin/python3
 
-python3.10 -m site check package default path
 
 
 
