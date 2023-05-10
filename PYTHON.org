@@ -44,7 +44,8 @@ USER_BASE = None
    ln -s -f /usr/local/python3.10/bin/pip3 /usr/local/bin/pip3
    ln -s -f /usr/local/python3.10/bin/python3 /usr/local/bin/python3
 
-
+4. install pkg
+   pip3 install pandas scipy scikit-learn matplotlib seaborn xlsxwriter xlrd openpyxl clickhouse_driver requests jupyter jupyter_contrib_nbextensions
 
 
 
